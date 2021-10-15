@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{67820769-56a5-4ef5-9751-ef8456085e6f}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>infer.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>CondaEnv|CondaEnv|pytorch</InterpreterId>
+    <CommandLineArguments>--cfg E:/train/window/win_det_heatmaps-master/experiments/resnet/lr1e-3_x120-90-110_center_b2.yaml  --model E:/train/window/data/zju_facade_jcst2020/model/resnet18_model_latest.pth.tar --infer E:/train/window/data/Building</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <TestFramework>Pytest</TestFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="common\speedometer.py" />
+    <Compile Include="common\utility\augment.py" />
+    <Compile Include="common\utility\folder.py" />
+    <Compile Include="common\utility\image_processing_cv.py" />
+    <Compile Include="common\utility\logger.py" />
+    <Compile Include="common\utility\utils.py" />
+    <Compile Include="common\utility\visualization.py" />
+    <Compile Include="common\utility\__init__.py" />
+    <Compile Include="common\__init__.py" />
+    <Compile Include="common_pytorch\base_modules\architecture.py" />
+    <Compile Include="common_pytorch\base_modules\deconv_head.py" />
+    <Compile Include="common_pytorch\base_modules\mobilenetv2.py" />
+    <Compile Include="common_pytorch\base_modules\resnet.py" />
+    <Compile Include="common_pytorch\base_modules\shufflenetv2.py" />
+    <Compile Include="common_pytorch\base_modules\__init__.py" />
+    <Compile Include="common_pytorch\blocks\mobilenetv2_pose.py" />
+    <Compile Include="common_pytorch\blocks\resnet_pose.py" />
+    <Compile Include="common_pytorch\blocks\shufflenetv2_pose.py" />
+    <Compile Include="common_pytorch\common_loss\balanced_parallel.py" />
+    <Compile Include="common_pytorch\common_loss\heatmap_label.py" />
+    <Compile Include="common_pytorch\common_loss\loss_recorder.py" />
+    <Compile Include="common_pytorch\common_loss\weighted_mse.py" />
+    <Compile Include="common_pytorch\common_loss\__init__.py" />
+    <Compile Include="common_pytorch\config_pytorch.py" />
+    <Compile Include="common_pytorch\dataset\all_dataset.py" />
+    <Compile Include="common_pytorch\dataset\evaluation.py" />
+    <Compile Include="common_pytorch\dataset\facade.py" />
+    <Compile Include="common_pytorch\dataset\imdb.py" />
+    <Compile Include="common_pytorch\dataset\__init__.py" />
+    <Compile Include="common_pytorch\dp.py" />
+    <Compile Include="common_pytorch\group\tag_group.py" />
+    <Compile Include="common_pytorch\io_pytorch.py" />
+    <Compile Include="common_pytorch\loss\heatmap.py" />
+    <Compile Include="common_pytorch\loss\__init__.py" />
+    <Compile Include="common_pytorch\net_modules.py" />
+    <Compile Include="common_pytorch\optimizer.py" />
+    <Compile Include="common_pytorch\__init__.py" />
+    <Compile Include="core\loader.py" />
+    <Compile Include="core\__init__.py" />
+    <Compile Include="infer.py" />
+    <Compile Include="test.py" />
+    <Compile Include="train.py" />
+    <Compile Include="_init_paths.py" />
+    <Compile Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\anno_example.jpg" />
+    <Content Include="docs\example.jpg" />
+    <Content Include="docs\facade_analytics.jpg" />
+    <Content Include="docs\facade_beautification.jpg" />
+    <Content Include="docs\framework.jpg" />
+    <Content Include="docs\textureBlendingApp.jpg" />
+    <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="common" />
+    <Folder Include="common\utility" />
+    <Folder Include="common_pytorch" />
+    <Folder Include="common_pytorch\base_modules" />
+    <Folder Include="common_pytorch\blocks" />
+    <Folder Include="common_pytorch\common_loss" />
+    <Folder Include="common_pytorch\dataset" />
+    <Folder Include="common_pytorch\group" />
+    <Folder Include="common_pytorch\loss" />
+    <Folder Include="core" />
+    <Folder Include="docs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="CondaEnv|CondaEnv|pytorch" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
