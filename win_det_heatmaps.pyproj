@@ -5,14 +5,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{67820769-56a5-4ef5-9751-ef8456085e6f}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>infer.py</StartupFile>
+    <StartupFile>train.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>CondaEnv|CondaEnv|pytorch</InterpreterId>
-    <CommandLineArguments>--cfg E:/train/window/win_det_heatmaps-master/experiments/resnet/lr1e-3_x120-90-110_center_b2.yaml  --model E:/train/window/data/zju_facade_jcst2020/model/resnet18_model_latest.pth.tar --infer E:/train/window/data/Building</CommandLineArguments>
+    <CommandLineArguments>--cfg E:/train/window/win_det_heatmaps-master/experiments/resnet/lr1e-3_x120-90-110_center_b2.yaml  --model E:/train/window/data/zju_facade_jcst2020/model/resnet18_model_latest.pth.tar --infer E:/train/window/data/Building --data E:/train/window/data/zju_facade_jcst2020</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
@@ -75,6 +75,7 @@
     <Content Include="docs\framework.jpg" />
     <Content Include="docs\textureBlendingApp.jpg" />
     <Content Include="requirements.txt" />
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="common" />

@@ -3,7 +3,7 @@ from easydict import EasyDict as edict
 
 import torch
 import torch.utils.model_zoo as model_zoo
-from torchvision.models.resnet import model_urls
+#from torchvision.models.resnet import model_urls
 
 from common_pytorch.base_modules.deconv_head import DeconvHead
 from common_pytorch.base_modules.resnet import resnet_spec, ResnetBackbone
@@ -29,11 +29,26 @@ def get_default_network_config():
 
     return config
 
+model_urls = {
+    'resnet18': 'resnet18.pth',
+    'resnet34': 'resnet34.pth',
+    'resnet50': 'resnet50.pth',
+    'resnet101': 'resnet101.pth',
+    'resnet152': 'resnet152.pth',
+    'resnext50_32x4d': 'resnext50.pth',
+    'resnext101_32x8d': 'resnext101.pth',
+    'wide_resnet50_2': 'wide_resnet50.pth',
+    'wide_resnet101_2': 'wide_resnet101.pth',
+}
 
 def init_pose_net(pose_net, cfg):
     if cfg.from_model_zoo:
         _, _, _, name = resnet_spec[cfg.num_layers]
-        org_resnet = model_zoo.load_url(model_urls[name])
+        resnetdir = os.path.join(os.path.dirname(__file__), '../../resnet')
+        resnetfile=os.path.join(resnetdir,model_urls[name])
+        if not os.path.exists(resnetfile):
+             raise ValueError("resnet file:{} is not exists".format(resnetfile))
+        org_resnet =torch.load(resnetfile) #model_zoo.load_url(model_urls[name])
         # drop orginal resnet fc layer, add 'None' in case of no fc layer, that will raise error
         org_resnet.pop('fc.weight', None)
         org_resnet.pop('fc.bias', None)

@@ -27,7 +27,9 @@ from blocks.resnet_pose import get_default_network_config, init_pose_net
 from loss.heatmap import get_default_loss_config, get_loss_func, get_label_func, get_merge_func
 
 from core.loader import facade_Dataset
-exec('from common_pytorch.blocks.' + s_config.pytorch.block + ' import get_default_network_config, get_pose_net, init_pose_net')
+#先注释掉这个exec的灵活性，方便vs中查看代码时跳转
+#exec('from common_pytorch.blocks.' + s_config.pytorch.block + ' import get_default_network_config, get_pose_net, init_pose_net')
+from common_pytorch.blocks.resnet_pose import get_default_network_config, get_pose_net, init_pose_net
 
 def main():
     # parsing specific config
